@@ -8,6 +8,7 @@ export default function LineItem({ lineItem, isPaid, handleChangeQty }) {
         <span className="align-ctr">{lineItem.item.name}</span>
         <span>{lineItem.item.price.toFixed(2)}</span>
       </div>
+      {!lineItem ?
       <div className="qty" style={{ justifyContent: isPaid && 'center' }}>
         {!isPaid &&
           <button
@@ -23,6 +24,11 @@ export default function LineItem({ lineItem, isPaid, handleChangeQty }) {
           >+</button>
         }
       </div>
+      :
+      <div className="qty" style={{ justifyContent: 'center' }}>
+        <span>{lineItem.qty}</span>
+      </div>
+      }
       <div className="ext-price">${lineItem.extPrice.toFixed(2)}</div>
     </div>
   );
